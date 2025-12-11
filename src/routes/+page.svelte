@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+  import Answer from "$lib/components/answer.svelte";
+  import List from "$lib/components/list.svelte";
+  import PollCard from "$lib/components/pollCard.svelte";
+</script>
+
+<h1>Welcome bo goss</h1>
+
+<div class="w-[20rem]">
+  <List />
+</div>

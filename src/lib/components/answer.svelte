@@ -1,4 +1,5 @@
 <script>
+  let { answer } = $props();
 </script>
 
 <div
