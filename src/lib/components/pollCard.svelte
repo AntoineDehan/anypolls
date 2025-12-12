@@ -16,10 +16,10 @@
         class="card-container flex flex-col gap-2 justify-center items-center"
       >
         {#each answers as answer}
-          <Answer {answer} />
+          <Answer {answer} id={poll.id} />
         {/each}
       </div>
-      <BottomCard time={poll.endTimestamp} />
+      <BottomCard endTime={poll.endTimestamp} startTime={poll.createdAt} />
     </div>
   {/if}
 </div>

@@ -5,9 +5,9 @@
   import { onMount } from "svelte";
   import { registerSW } from "virtual:pwa-register";
 
-   onMount(async () => {
+  onMount(async () => {
     if (pwaInfo) {
-      const { registerSW } = await import('virtual:pwa-register')
+      const { registerSW } = await import("virtual:pwa-register");
       registerSW({
         immediate: true,
         onRegistered(r) {
@@ -16,29 +16,26 @@
           //    console.log('Checking for sw update')
           //    r.update()
           // }, 20000 /* 20s for testing purposes */)
-          console.log(`SW Registered: ${r}`)
+          console.log(`SW Registered: ${r}`);
         },
         onRegisterError(error) {
-          console.log('SW registration error', error)
-        }
-      })
+          console.log("SW registration error", error);
+        },
+      });
     }
-  })
+  });
 
-  const webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : ''
-
-
+  const webManifest = pwaInfo ? pwaInfo.webManifest.linkTag : "";
   let { children } = $props();
 </script>
 
 <svelte:head>
-
   {@html webManifest}
 </svelte:head>
 <header>
   <nav>
     <a href="/">acceuil</a>
-    <a href="/profile/">profile</a>
+    <a href="/creation">creation</a>
     <a href="t">login</a>
   </nav>
 </header>

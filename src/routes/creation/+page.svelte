@@ -1,4 +1,7 @@
 <script>
+  import { db } from "../../database/db";
+  import { v4 as uuidv4 } from "uuid";
+
   let inputValueTest = "test";
 
   let answerlist = $state([
@@ -32,15 +35,24 @@
       users: [],
     }));
 
-    const newPoll = {
-      createdAt: Date.now(),
-      answers,
-      endTimestamp: Date.now() + Number(data.time) * 3600 * 1000,
-    };
+    addPoll(data, answers);
+  }
 
-    poll = [...poll, newPoll];
-
-    console.log("POLL AJOUTÉ :", newPoll);
+  async function addPoll(data, answers) {
+    try {
+      const id = await db.polls.add({
+        id: uuidv4(),
+        title: data.question,
+        createdAt: Date.now(),
+        answers,
+        endTimestamp: Date.now() + Number(data.time) * 3600 * 1000,
+      });
+      status = `Ajout polls`;
+      console.log("ok db polls");
+    } catch (error) {
+      status = `Pas ajout polls`;
+      console.log("pas ok db polls", error);
+    }
   }
 </script>
 
